@@ -1,0 +1,66 @@
+<form class="my-5">
+  <div class="mb-3">
+    <label for="yotubeVideoUrl" class="form-label">Youtube Video URL</label>
+    <input
+      type="text"
+      class="form-control"
+      id="yotubeVideoUrl"
+      placeholder="URL..."
+      #ytVideoURL
+    />
+  </div>
+
+  <div class="d-grid">
+    <button type="button" class="btn btn-danger" (click)="getData(ytVideoURL)">
+      Get Youtube Video Data
+    </button>
+  </div>
+</form>
+
+<form class="my-5">
+  <h3>Thumbnail i description podaci</h3>
+  <div class="mb-3">
+    <input
+      #thumbnailUrl
+      type="text"
+      class="form-control"
+      placeholder="Thumbnail url..."
+      disabled
+    />
+  </div>
+  <div class="mb-3">
+    <input
+      #description
+      type="text"
+      class="form-control"
+      placeholder="Description..."
+      disabled
+    />
+  </div>
+
+  <div class="d-grid">
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="addYoutubeVideo(ytVideoURL)"
+    >
+      Add
+    </button>
+  </div>
+</form>
+
+<div *ngFor="let video of videos" class="mb-5">
+  <div class="p-3 my-5">
+    <div class="row">
+      <div class="col-4">
+        <img src="{{ video.img }}" alt="..." class="img-fluid" />
+      </div>
+      <div class="col-8">
+        <h3>
+          <a target="_blank" href="{{ ytVideoURL.value }}">{{ video.title }}</a>
+        </h3>
+        <p>{{ video.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
